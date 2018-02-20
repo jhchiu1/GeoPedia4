@@ -1,7 +1,6 @@
 # Weather API
 # Code sample from https://www.wunderground.com/weather/api/d/docs?d=resources/code-samples&MR=1
 
-import lksjdlf
 import urllib.request
 import json
 
