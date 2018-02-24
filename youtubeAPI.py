@@ -28,9 +28,9 @@ def youtube_search(options):
     videos = []
 
     # Add each result to the list, the display the lists
-    for search_result in search_response.get('items', []):
-        if search_result['id']['kind'] == 'youtube#video':
-            videos.append([search_result['snippet']['title'], "https://www.youtube.com/embed/" + str(search_result['id']['videoId'])])
+    for search_string in search_response.get('items', []):
+        if search_string['id']['kind'] == 'youtube#video':
+            videos.append([search_string['snippet']['title'], "https://www.youtube.com/embed/" + str(search_string['id']['videoId'])])
     return (videos)
 
 
@@ -42,3 +42,4 @@ if __name__ == '__main__':
         print(videos)
     except Exception as e:
         print(e)
+
