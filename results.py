@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-
+#searches through wiki with word
 def getWikiInfo(word):
     wikilist = []
     url = 'https://en.wikipedia.org/wiki/'
@@ -21,6 +21,7 @@ def getWikiInfo(word):
         sum = WikipediaAPI.getSummary(word)
     except:
         sum = "Click link to view page"
+		#does not include links
 
     wikilist.append(word)
     wikilist.append(url)
