@@ -17,6 +17,7 @@ class Tweet:
         self.retweets = retweets
         self.likes = likes
         self.html = html
+		#setup stuff to assign titles
 
     @classmethod
     def from_soup(cls, tweet):
@@ -38,15 +39,19 @@ class Tweet:
                 'span', 'ProfileTweet-action--favorite u-hiddenVisually').find(
                     'span', 'ProfileTweet-actionCount')['data-tweet-stat-count'] or '0',
             html=str(tweet.find('p', 'tweet-text')) or "",
+			
+			#finds all information about tweets related to topic including retweets, likes, replies, ect
         )
 
     @classmethod
     def from_html(cls, html):
+	#calls method to get html information
         soup = BeautifulSoup(html, "lxml")
         tweets = soup.find_all('li', 'js-stream-item')
         if tweets:
             for tweet in tweets:
                 try:
                     yield cls.from_soup(tweet)
+					#recieves info
                 except AttributeError:
                     pass  # Discard incomplete info
