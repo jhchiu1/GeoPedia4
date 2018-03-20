@@ -52,6 +52,6 @@ class Tweet:
             for tweet in tweets:
                 try:
                     yield cls.from_soup(tweet)
-					#recieves info
+					#receives info
                 except AttributeError:
                     pass  # Discard incomplete info
