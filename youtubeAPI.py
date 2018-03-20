@@ -32,7 +32,7 @@ def youtube_search(options):
         if search_string['id']['kind'] == 'youtube#video':
             videos.append([search_string['snippet']['title'], "https://www.youtube.com/embed/" + str(search_string['id']['videoId'])])
     return (videos)
-
+        Logger.info(Videos returned, *args, **kwargs) #info logger to tell you this has been successful
 
 
 
