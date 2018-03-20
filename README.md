@@ -13,8 +13,8 @@ Allows a user to enter a geographic location to learn more about it
 
 Create and activate virtual environment
 
-* ** pip install -r requirements.txt
-* ** python app.py
+* pip install -r requirements.txt
+* python app.py
 
 
 These instructions will get you a copy of the project up and running on your local machine.
