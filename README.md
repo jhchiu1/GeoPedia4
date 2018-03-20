@@ -11,9 +11,15 @@ Allows a user to enter a geographic location to learn more about it
 
 ## Getting Started
 
+Create and activate virtual environment
+
+* ** pip install -r requirements.txt
+* ** python app.py
+
+
 These instructions will get you a copy of the project up and running on your local machine.
 
-1. Pull it: `git clone https://github.com/Judas-Michael/Project4-API-Concurrency'
+1. Pull it: `git clone https://github.com/jhchiu1/GeoPedia'
 2. Run it: Windows `py weatherapi.py` Linux/OSX `python3 weatherapi.py`
 
 
