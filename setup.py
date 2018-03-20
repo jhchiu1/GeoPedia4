@@ -1,3 +1,5 @@
+# Installs package requirements
+
 from setuptools import setup, find_packages
 
 

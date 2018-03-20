@@ -1,4 +1,4 @@
-# COMMAND LINE APP TO SCRAPE TWITTER
+# COMMAND LINE APP TO SCRAPE TWITTER TEETS
 
 import json
 import logging
@@ -20,7 +20,7 @@ def getKeys():
     return consumerKey,consumerSecret,accessToken,accessTokenSecret
 
 class TwitterAPI():
-    # Initiaing info for Twitter API
+    # Initiating info for Twitter API
     def __init__(self):
 
 
