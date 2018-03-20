@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Give Me A Random Cat</h1>
+
+<h2>Category of Cat</h2>
+
+<form action="/get-cat" method="GET" >
+
+  <select name="category">
+    <option value="boxes"/>boxes
+    <option value="funny"/>funny
+    <option value="hats"/>hats
+    <option value="sinks"/>sinks
+    <option value="space"/>space
+  </select>
+
+  <input type ="submit" value="GO"/>
+
+</form>
+
+{% endblock %}
