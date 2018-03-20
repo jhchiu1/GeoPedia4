@@ -20,14 +20,14 @@ YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
 
 # Create methods to search YouTube videos
-def youtube_search(options):
+def youtube_search(location):
     # Builds for searching
     youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,developerKey=DEVELOPER_KEY)
 
     # Call the search.list method to retrieve matching results
-    search_response = youtube.search().list(q=options, part='id,snippet', maxResults=1, type='videos', safeSearch='strict').execute()
+    search_response = youtube.search().list(q=location, part='id,snippet', maxResults=1, type='videos', safeSearch='strict').execute()
     videos = []
-    
+
     # Add each result to the list, the display the lists
     for search_string in search_response.get('items', []):
         if search_string['id']['kind'] == 'youtube#video':
