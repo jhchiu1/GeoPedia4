@@ -105,6 +105,7 @@ def query_tweets_once(query, limit=None, lang=''):
 
 def roundup(numerator, denominator):
     return numerator // denominator + (numerator % denominator > 0)
+	#manual math operation -- could we do this better?
 
 def query_tweets(query, limit=None, begindate=dt.date(2017,1,1), enddate=dt.date.today(), poolsize=20, lang=''):
     no_days = (enddate - begindate).days
@@ -114,8 +115,10 @@ def query_tweets(query, limit=None, begindate=dt.date(2017,1,1), enddate=dt.date
 
     if limit:
         limit_per_pool = roundup(limit, poolsize)
+		#rounds up for limit
     else:
         limit_per_pool = None
+		#no limit exists
 
     queries = ['{} since:{} until:{}'.format(query, since, until)
                for since, until in zip(dateranges[:-1], dateranges[1:])]
@@ -129,12 +132,15 @@ def query_tweets(query, limit=None, begindate=dt.date(2017,1,1), enddate=dt.date
                 all_tweets.extend(new_tweets)
                 logging.info("Retrieved {} tweets ({} new).".format(
                     len(all_tweets), len(new_tweets)))
+					#logging!
         except KeyboardInterrupt:
             logging.info("Program interrupted by user. Returning all tweets "
                          "gathered so far.")
+						 #logging!
     finally:
         pool.close()
         pool.join()
-
+#closes and contains information
     return all_tweets
+	#returns info
 
