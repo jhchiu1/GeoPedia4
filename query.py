@@ -26,24 +26,30 @@ def query_single_page(url, html_response=True, retry=10):
 
     try:
         response = requests.get(url, headers=headers)
+		#draws from database specific information
         if html_response:
             html = response.text
+			#inputs html received 
         else:
             json_resp = response.json()
             html = json_resp['items_html']
+			#inputs json received
 
         tweets = list(Tweet.from_html(html))
 
         if not tweets:
             return [], None
+			#data validation for non existent
 
         if not html_response:
             return tweets, json_resp['min_position']
+			#data validation for non existent 
 
         return tweets, "TWEET-{}-{}".format(tweets[-1].id, tweets[0].id)
     except requests.exceptions.HTTPError as e:
         logging.exception('HTTPError {} while requesting "{}"'.format(
             e, url))
+			#checks for error
     except requests.exceptions.ConnectionError as e:
         logging.exception('ConnectionError {} while requesting "{}"'.format(
             e, url))
@@ -59,6 +65,7 @@ def query_single_page(url, html_response=True, retry=10):
         return query_single_page(url, html_response, retry-1)
 
     logging.error("Quitting.")
+	#errors when logging
     return [], None
 
 
