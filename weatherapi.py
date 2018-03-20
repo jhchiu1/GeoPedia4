@@ -12,10 +12,7 @@ def getKey():
     file.close()
     return key
 
-###### WORK IN PROGRESS
-class WeatherAPISearch:
-	def __init__(self):
-		self.key = getKey()
+def WeatherAPISearch:
 
 		state = 'mn' # Input for state
 		city = 'state%20jello'	# Input for state, %20 used as placeholder for space since user can't enter space
