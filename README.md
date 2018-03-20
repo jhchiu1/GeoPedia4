@@ -1,4 +1,4 @@
-# Modern Location Encyclopedia
+# GeoPedia - A Modern Geolocation Encyclopedia
 
 Allows a user to enter a geographic location to learn more about it
 
@@ -7,7 +7,7 @@ Allows a user to enter a geographic location to learn more about it
 * Weather from Wunderground
 * Tweets from Twitter
 * Videos from YouTube
-* Wikipedia
+
 
 ## Getting Started
 
@@ -38,7 +38,7 @@ Git
 
 * **Julie Chiu** - *Collaborator* - [jhchiu1](https://github.com/jhchiu1)
 * **Judas Lane** - *Collaborator* - [Judas-Michael](https://github.com/Judas-Michael)
-* **Heather Amo** - *Collaborator* - [HeatherDa](https://github.com/HeatherDa)
+
 
 ## TwitterAPI
 
