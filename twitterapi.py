@@ -11,11 +11,12 @@ from twitterscraper.query import query_tweets
 
 
 def getKeys():
-    file = open("twitterkey.txt","r")
+    file = open("twitterkey.txt","r") #opens key for Twitter API
     consumerKey = file.readline().rstrip("\n")
     consumerSecret = file.readline().rstrip("\n")
     accessToken = file.readline().rstrip("\n")
     accessTokenSecret = file.readline().rstrip("\n")
+	#reads file to get assigned values
     file.close()
     return consumerKey,consumerSecret,accessToken,accessTokenSecret
 
@@ -37,6 +38,8 @@ class TwitterAPI():
         tweets = self.api.search(q=query,count = 10,show_user = True,include_entities=True)
         users = []
         for tweet in tweets:
+		
+		#creates array and adds search info to it
 
             user = []
             user.append(tweet.user.name)
@@ -89,7 +92,7 @@ def main():
         parser.add_argument("-d", "--dump", action="store_true")
         parser.add_argument("-bd", "--begindate", type=valid_date, default="2017-01-01", metavar='\b')
         parser.add_argument("-ed", "--enddate", type=valid_date, default=dt.date.today(), metavar='\b')
-
+		#adds information for collection 
         args = parser.parse_args()
 
         if isfile(args.output) and not args.dump:

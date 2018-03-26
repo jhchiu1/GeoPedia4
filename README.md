@@ -15,6 +15,7 @@ Create and activate virtual environment
 
 * pip install -r requirements.txt
 * python app.py
+* App will be running on http://127.0.0.1:5000
 
 
 These instructions will get you a copy of the project up and running on your local machine.

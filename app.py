@@ -27,6 +27,8 @@ def home_page():
 
 @app.route('/get-data')
 def get_data():
+
+#takes argument and applies it to APIs
     location = request.args.get('location') #or 'space'  # set a default
 
     youtube_video = youtubeAPI.youtube_search(location)
@@ -35,8 +37,10 @@ def get_data():
 
     if youtube_video and weather_temp and twitter_tweet:
         return render_template('geopedia.html', youtube_video=youtube_video, location=location, weather_temp=weather_temp, twitter_tweet=twitter_tweet)
+		#pushes template out with API information
     else:
         return render_template('error.html')
+		#pushes error if something is not found
 
 
 if __name__ == '__main__':

@@ -26,24 +26,30 @@ def query_single_page(url, html_response=True, retry=10):
 
     try:
         response = requests.get(url, headers=headers)
+		#draws from database specific information
         if html_response:
             html = response.text
+			#inputs html received 
         else:
             json_resp = response.json()
             html = json_resp['items_html']
+			#inputs json received
 
         tweets = list(Tweet.from_html(html))
 
         if not tweets:
             return [], None
+			#data validation for non existent
 
         if not html_response:
             return tweets, json_resp['min_position']
+			#data validation for non existent 
 
         return tweets, "TWEET-{}-{}".format(tweets[-1].id, tweets[0].id)
     except requests.exceptions.HTTPError as e:
         logging.exception('HTTPError {} while requesting "{}"'.format(
             e, url))
+			#checks for error
     except requests.exceptions.ConnectionError as e:
         logging.exception('ConnectionError {} while requesting "{}"'.format(
             e, url))
@@ -59,6 +65,7 @@ def query_single_page(url, html_response=True, retry=10):
         return query_single_page(url, html_response, retry-1)
 
     logging.error("Quitting.")
+	#errors when logging
     return [], None
 
 
@@ -98,6 +105,7 @@ def query_tweets_once(query, limit=None, lang=''):
 
 def roundup(numerator, denominator):
     return numerator // denominator + (numerator % denominator > 0)
+	#manual math operation -- could we do this better?
 
 def query_tweets(query, limit=None, begindate=dt.date(2017,1,1), enddate=dt.date.today(), poolsize=20, lang=''):
     no_days = (enddate - begindate).days
@@ -107,8 +115,10 @@ def query_tweets(query, limit=None, begindate=dt.date(2017,1,1), enddate=dt.date
 
     if limit:
         limit_per_pool = roundup(limit, poolsize)
+		#rounds up for limit
     else:
         limit_per_pool = None
+		#no limit exists
 
     queries = ['{} since:{} until:{}'.format(query, since, until)
                for since, until in zip(dateranges[:-1], dateranges[1:])]
@@ -122,12 +132,15 @@ def query_tweets(query, limit=None, begindate=dt.date(2017,1,1), enddate=dt.date
                 all_tweets.extend(new_tweets)
                 logging.info("Retrieved {} tweets ({} new).".format(
                     len(all_tweets), len(new_tweets)))
+					#logging!
         except KeyboardInterrupt:
             logging.info("Program interrupted by user. Returning all tweets "
                          "gathered so far.")
+						 #logging!
     finally:
         pool.close()
         pool.join()
-
+#closes and contains information
     return all_tweets
+	#returns info
 
