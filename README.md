@@ -13,7 +13,8 @@ Allows a user to enter a geographic location to learn more about it
 
 Create and activate virtual environment
 
-* pip install -r requirements.txt
+* ./venv/bin/pip install -r requirements.txt
+* source venv/bin/activate
 * python app.py
 * App will be running on http://127.0.0.1:5000
 
