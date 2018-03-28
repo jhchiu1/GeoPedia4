@@ -24,19 +24,18 @@ class TwitterAPI():
     # Initiating info for Twitter API
     def __init__(self):
 
-
         self.consumerKey,self.consumerSecret,self.accessToken,self.accessTokenSecret = getKeys()
 
         auth = tweepy.OAuthHandler(self.consumerKey, self.consumerSecret)
         auth.set_access_token(self.accessToken,self.accessTokenSecret)
         self.api = tweepy.API(auth)
 
-
     # Call this with a query to get results
 
     def getTweets(self,query):
         tweets = self.api.search(q=query,count = 10,show_user = True,include_entities=True)
         users = []
+        print (tweets)
         for tweet in tweets:
 		
 		#creates array and adds search info to it

@@ -6,6 +6,7 @@ from googleapiclient.errors import HttpError
 import os
 
 
+
 # Gets the key from the file
 # Reads file and returns key
 def getKey():
@@ -26,13 +27,14 @@ def youtube_search(location):
 
     # Call the search.list method to retrieve matching results
     search_response = youtube.search().list(q=location, part='id,snippet', maxResults=1, type='videos', safeSearch='strict').execute()
-    videos = []
+    videos = {}
 
     # Add each result to the list, the display the lists
     for search_string in search_response.get('items', []):
         if search_string['id']['kind'] == 'youtube#video':
-            videos.append([search_string['snippet']['title'], "https://www.youtube.com/embed/" + str(search_string['id']['videoId'])])
-    return (videos)
+            videos['title'] = search_string['snippet']['title']
+            videos['uri'] =  "https://www.youtube.com/embed/" + str(search_string['id']['videoId'])
+            return (videos)
         #Logger.info(Videos returned, *args, **kwargs) # Info logger to tell you this has been successful
 
 

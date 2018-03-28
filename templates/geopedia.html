@@ -3,23 +3,21 @@
 
 {% block content %}
 
-<h1>Here is your {{category}} info:</h1>
+<h1 data-location="{{ location }}">Here is your {{location}} info:</h1>
 
-{% if weather_temp %}
+<button onclick="geopediabookmark();">SAVE SEARCH</button>
 
-<h2>Tweets</h2>
+<div id="history"></div>
 
-<p>{{twitter_tweet}}</p>
+<p>Temperature: {{ weather_temp }}</p>
 
-{% endif %}
 
-{% if youtube_video %}
 
-<h2>{{ youtube_video.title }}</h2>
+<p>Tweet: {{ twitter_tweet }}</p>
 
-<iframe width="420" height="315" src="https://www.youtube.com/embed/{{youtube_video.video_id}}"></iframe>
-
-{% endif %}
-
+<p>Youtube: {{ youtube_video['title'] }}</p>
+<iframe src="{{ youtube_video ['uri'] }}" ></iframe>
 
 {% endblock %}
+
+
