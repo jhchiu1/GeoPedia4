@@ -52,7 +52,11 @@ function renderbookmarks() {
 		
 	for (var i = 0; i < bs.length; i++) {
 		var bm = bs[i];
+		if (document.getElementById(bs[i])) {continue;}
 		var bme = document.createElement("li");
+		var bmei = document.createAttribute("id");
+		bmei.value = bs[i];
+		bme.attributes.setNamedItem(bmei);
 		var ba = document.createElement("a");
 		var hra = document.createAttribute("href");
 		hra.value = bm[1].href;
@@ -66,3 +70,4 @@ function renderbookmarks() {
 };
 
 renderbookmarks();
+
