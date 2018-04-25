@@ -26,7 +26,7 @@ def get_data():
         return render_template('error.html')
 		#pushes error if something is not found
 
-with app.test_request_context()
+with app.test_request_context():
 	def get_geojs():
     		return 
 
